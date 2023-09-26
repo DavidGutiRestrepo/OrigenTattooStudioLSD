@@ -1,8 +1,8 @@
-const clientUseCases = require('../usecases/clients.usecase');
+const usersUseCases = require('../usecases/users.usecase');
 
-exports.showClientController = async (req, res) =>{
+exports.showUserController = async (req, res) =>{
   try {
-    const result = await clientUseCases.showClients();
+    const result = await usersUseCases.showUsers();
 
     if (result.error) {
       return res.json({
@@ -18,9 +18,9 @@ exports.showClientController = async (req, res) =>{
   }
 };
 
-exports.createClientController = async (req, res) =>{
+exports.createUserController = async (req, res) =>{
   try {
-    const result = await clientUseCases.createClient(req.body);
+    const result = await usersUseCases.createUser(req.body);
 
     if (result.error) {
       return res.json({
@@ -36,9 +36,9 @@ exports.createClientController = async (req, res) =>{
   }
 };
 
-exports.updateClientController = async (req, res) =>{
+exports.updateUserController = async (req, res) =>{
   try {
-    const result = await clientUseCases.updateClient(req.body);
+    const result = await usersUseCases.updateUser(req.body);
 
     if (result.error) {
       return res.json({
@@ -54,9 +54,9 @@ exports.updateClientController = async (req, res) =>{
   }
 };
 
-exports.deleteClientController = async (req, res) => {
+exports.deleteUserController = async (req, res) => {
   try {
-    const result = await clientUseCases.deleteClient(req.body);
+    const result = await usersUseCases.deleteUser(req.body);
 
     if (result.error) {
       return res.json({
