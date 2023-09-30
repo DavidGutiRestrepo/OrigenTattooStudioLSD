@@ -7,6 +7,7 @@ const controllerPiercings = require('../controller/piercings.controller');
 const controllerTattoo = require('../controller/tattoo.controller');
 const controllerUser = require('../controller/users.controller');
 
+//client
 router.get('/showclient', controllerClients.showClientController);
 router.post('/newclient', controllerClients.createClientController);
 router.post('/updateclient', controllerClients.updateClientController);

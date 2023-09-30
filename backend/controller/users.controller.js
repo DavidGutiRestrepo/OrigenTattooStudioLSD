@@ -2,7 +2,7 @@ const usersUseCases = require('../usecases/users.usecase');
 
 exports.showUserController = async (req, res) =>{
   try {
-    const result = await usersUseCases.showUsers();
+    const result = await usersUseCases.showUser();
 
     if (result.error) {
       return res.json({

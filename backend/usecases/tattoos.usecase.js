@@ -18,8 +18,8 @@ exports.createTattoo = async (tattooInfo) => {
   }
 };
 
-exports.updateTattoo = async (tattooUpdate) => {
-  const {nombre, descripcion, tamano, color, tecnica, autor, imagen} = tattooUpdate;
+exports.updateTattoo = async (infoUpdate) => {
+  const {nombre, descripcion, tamano, color, tecnica, autor, imagen} = infoUpdate;
   const infoToUpdate = {
     nombre: nombre,
     descripcion: descripcion,
@@ -29,11 +29,11 @@ exports.updateTattoo = async (tattooUpdate) => {
     autor: autor,
     imagen: imagen,
   };
-  const tattooUpdated = await tattoosData.updateOne({nombre: nombre});
-  if (!clientUpdated) {
-    return {error: 'No se actualizó'};
-  } else {
+  const tattooUpdated = await tattoosData.updateOne({nombre: nombre}, infoToUpdate);
+  if (tattooUpdated) {
     return {success: 'Actualizado correctamente'};
+  } else {
+    return {error: 'No se actualizo'};
   }
 };
 
