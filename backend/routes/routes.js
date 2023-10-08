@@ -82,10 +82,10 @@ const controllerUser = require('../controller/users.controller');
 
 /**
  * @swagger
- * /api/v1/:
+ * /api/v1/newclient:
  *  post:
  *      sumamry: create a new client
- *      tags: [Client]
+ *      tags: [Clients]
  *      requestBody:
  *          required: true
  *          content:    
@@ -97,6 +97,70 @@ const controllerUser = require('../controller/users.controller');
  *          200:
  *            description: Nuevo usuario creador!
  */
+
+/**
+ * @swagger
+ * /api/v1/showclient:
+ *  get:
+ *      sumamry: return all clients
+ *      tags: [Clients]
+ *      responses:
+ *          200:
+ *            description: all users!
+ *            content:
+ *              appllication/json:
+ *                 schema:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Client'
+ *                     
+ */
+/**
+ * @swagger
+ * /api/v1/showclient/{id}:
+ *    get:
+ *      sumamry: return  client
+ *      tags: [Clients]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: the client id
+ *      responses:
+ *          200:
+ *            description: all clients!
+ *            content:
+ *              appllication/json:
+ *                 schema:
+ *                     type: object
+ *                     $ref: '#/components/schemas/Client'
+ *          404:
+ *            description: user not found
+ *                     
+ */
+/**
+ * @swagger
+ * /api/v1/deleteclient/{id}:
+ *    delete:
+ *      sumamry: return  client
+ *      tags: [Clients]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: the client id
+ *      responses:
+ *          200:
+ *            description: user delete
+ *            
+ *          404:
+ *            description: user not found
+ *                     
+ */
 //client
 router.get('/showclient', controllerClients.showClientController);
 router.post('/newclient', controllerClients.createClientController);
@@ -104,6 +168,160 @@ router.post('/updateclient', controllerClients.updateClientController);
 router.delete('/deleteclient', controllerClients.deleteClientController);
 
 
+/**
+ * @swagger 
+ * components:
+ *  schemas:
+ *     Tattoo:
+ *      type: object
+ *      properties: 
+ *          nombre:
+ *            type: string
+ *            description: El nombre del tatuaje
+ * 
+ *          descripcion:
+ *             type: string
+ *             description: La descripcion del tatuaje
+ * 
+ *          tamano:
+ *           type: string
+ *           description: El tamaño del tatuaje
+ * 
+ *          Autor:
+ *           type: string
+ *           description: El autor del tatuaje
+ *          
+ *          imagen:
+ *           type: string
+ *           description: La imagen del tatuaje
+ *          
+ *     
+ * 
+ *      required:
+ *         -nombre
+ *         -descripcion
+ *         -tamano
+ *         -color
+ *         -tecnica
+ *         -autor
+ *         -imagen
+ *      example:
+ *        nombre: Demino del mar
+ *        descripcion: Calamar de grandes tentaculos sobre el agua
+ *        tamano: 30cm
+ *        color: negro y blanco
+ *        tecnica: Clasico
+ *        imagen: url de la imagen
+ *        
+ *           
+ */
+/**
+ * @swagger
+ * /api/v1/newtattoo:
+ *  post:
+ *      sumamry: create a new tattoo
+ *      tags: [Tattoo]
+ *      requestBody:
+ *          required: true
+ *          content:    
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                $ref: '#/components/schemas/Tattoo'
+ *      responses:
+ *          200:
+ *            description: Nuevo tatuaje creador!
+ */
+/**
+ * @swagger
+ * /api/v1/showtattoo:
+ *  get:
+ *      sumamry: return all tattoo
+ *      tags: [Tattoo]
+ *      responses:
+ *          200:
+ *            description: all tattoos!
+ *            content:
+ *              appllication/json:
+ *                 schema:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Tattoo'
+ *                     
+ */
+/**
+ * @swagger
+ * /api/v1/showtattoo/{id}:
+ *    get:
+ *      sumamry: return  tattoo
+ *      tags: [Tattoo]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: the tattoo id
+ *      responses:
+ *          200:
+ *            description: all tattoo!
+ *            content:
+ *              appllication/json:
+ *                 schema:
+ *                     type: object
+ *                     $ref: '#/components/schemas/Tattoo'
+ *          404:
+ *            description: tattoo not found
+ *                     
+ */
+/**
+ * @swagger
+ * /api/v1/deletetattoo/{id}:
+ *    delete:
+ *      sumamry: return  tattoo
+ *      tags: [Tattoo]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: the tattoo id
+ *      responses:
+ *          200:
+ *            description: tattoo delete
+ *            
+ *          404:
+ *            description: tattoo not found
+ *                     
+ */
+/**
+ * @swagger
+ * /api/v1/updatetattoo:
+ *  put:
+ *      sumamry: return  tattoo
+ *      tags: [Tattoo]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: the tattoo id
+ *      requestBody:
+ *          required: true
+ *          content:    
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                $ref: '#/components/schemas/Tattoo'
+ *      responses:
+ *          200:
+ *            description: Tattoo updated
+ * 
+ *          404:
+ *            description: tattoo not found
+ */
 
 // tattoo
 router.get('/showtattoo', controllerTattoo.showTattooController);

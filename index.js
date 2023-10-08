@@ -14,7 +14,7 @@ const swaggerSpec={
     },
     servers:[
       {
-      url:'http://localhost:7012'
+      url:'http://localhost:7000'
       }]
   },
   apis:[ `${path.join(__dirname,"./backend/routes/routes.js")}`],

@@ -32,3 +32,4 @@ const schemaTattoo = new mongoose.Schema({
 
 const tattoo = mongoose.model('Tattoo', schemaTattoo);
 module.exports = tattoo;
+
