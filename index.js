@@ -1,31 +1,22 @@
 const express = require('express');
 const app = express();
-const routes = require('./backend/routes/routes');
-require('dotenv').config();
-const path=require('path')
-const swaggerUI=require('swagger-ui-express');
-const swaggerJsDoc=require('swagger-jsdoc');
-const swaggerSpec={
-  definition:{
-    openapi:'3.1.0',
-    info:{
-      title:'OrigenTattoStudio',
-      version:'1.0.0'
-    },
-    servers:[
-      {
-      url:'http://localhost:7000'
-      }]
-  },
-  apis:[ `${path.join(__dirname,"./backend/routes/routes.js")}`],
-  };
+const swaggerUI = require('swagger-ui-express');
+const path = require('path');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+// Define la ruta al archivo JSON de definición de OpenAPI
+const swaggerDocument = require('./openapi.json'); // Asegúrate de que el nombre del archivo sea correcto
 
-app.use('/api/v1/', routes);
-app.use('/api.doc',swaggerUI.serve,swaggerUI.setup(swaggerJsDoc(swaggerSpec)))
-app.listen(process.env.PORT, () => {
-  console.log('funciona');
+// Configura Swagger con la definición del archivo JSON
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+
+// Agrega tus rutas o lógica de la aplicación aquí
+// ...
+
+// Inicia el servidor
+const port = process.env.PORT || 7000;
+app.listen(port, () => {
+  console.log('La aplicación está funcionando en el puerto ' + port);
 });
